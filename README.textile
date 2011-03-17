@@ -23,7 +23,7 @@ h3. Needed:
 * Java (also in your $PATH)
 * "YUI-Compressor":http://yuilibrary.com/downloads/#yuicompressor
 * Ruby
-* OS: currently just Linux support
+* OS: currently just Linux supported
 
 h3. Configurate:
 
