@@ -1,4 +1,4 @@
-h2. "Compress my Mojo"
+h2. "Compress my Mojo - Linux"
 
 *Copyright (c) 2011, R. Kowalski*
 *All rights reserved.*
@@ -17,6 +17,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 h2. Installation Notes:
+
+h3. Needed:
+
+* Java (also in your $PATH)
+* "YUI-Compressor":http://yuilibrary.com/downloads/#yuicompressor
+* Ruby
+* OS: currently just Linux support
 
 h3. Configurate:
 
