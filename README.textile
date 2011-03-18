@@ -1,6 +1,6 @@
 h2. "Compress my Mojo - Linux"
 
-h3. Compress your webOS-Mojo-Application and build a package
+h3. Compresses your webOS-Mojo-Applications and builds packages
 
 *Copyright (c) 2011, R. Kowalski*
 *All rights reserved.*
@@ -33,6 +33,6 @@ h3. Configurate:
 * Set your webOS-project directory name
 * Place the rb in the parent directory of the webOS-Project
 
-h2. Compress JS and build IPK:
+h2. Compress JS & CSS and build IPK:
 
 pre. $ ruby build.rb
