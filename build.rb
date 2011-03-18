@@ -29,8 +29,9 @@ def compress(path, pattern, yui_jar)
   end
 end
  
-
+#compress .js- then .css-files
 compress('./.build/', /.+\.js$/, yui_jar)
+compress('./.build/', /.+\.css$/, yui_jar)
 
 string = 'palm-package ./.build/'
 ret  = system(string)
