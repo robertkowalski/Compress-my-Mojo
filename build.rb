@@ -1,10 +1,19 @@
 #!/usr/bin/ruby
 
+##########
+# Check for command line argument
+##########
+unless ARGV.length == 1
+  puts "Please specify a project folder name."
+  puts "Usage: ruby build.rb <PROJECTFOLDER-NAME>\n"
+  exit
+end
 
 ##########
 # Config #
 ##########
-projectfolder = 'easterhegg' #your webOS Project folder
+#projectfolder = 'easterhegg' #your webOS Project folder
+projectfolder = ARGV[0]
 yui_jar = '~/Desktop/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar'
 
 
