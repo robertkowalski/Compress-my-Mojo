@@ -14,9 +14,13 @@ end
 ##########
 #projectfolder = 'easterhegg' #your webOS Project folder
 if ARGV.length > 1
-   projectfolder = ARGV[1] 
-else 
-   projectfolder = ARGV[0]
+   projectfolder = ARGV[1]
+else
+  if ARGV[0] == '-i'
+    puts "Please specify a project folder name."
+    exit
+  end
+  projectfolder = ARGV[0]
 end
 yui_jar = '~/Desktop/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar'
 
