@@ -26,9 +26,13 @@ end
 # Check for second arguments
 ##########
 if ARGV.length > 1
-   projectfolder = ARGV[1] 
-else 
-   projectfolder = ARGV[0]
+   projectfolder = ARGV[1]
+else
+  if ARGV[0] == '-i'
+    puts "Please specify a project folder name."
+    exit
+  end
+  projectfolder = ARGV[0]
 end
 
 # pre-deleting ./.build/ for avoiding errors @ build
