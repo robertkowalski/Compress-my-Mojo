@@ -34,6 +34,7 @@ end
 # pre-deleting ./.build/ for avoiding errors @ build
 puts 'Deleting temp-files'
 string = 'rm -rf ./.build/'
+ret  = system(string)
 
 # copy bitch, copy!
 cp_r './'+projectfolder, './.build/'
