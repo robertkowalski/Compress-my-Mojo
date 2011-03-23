@@ -29,9 +29,12 @@ h3. Needed:
 
 h3. Configurate:
 
-* Set your path to YUI-Compressor jar in rb-file  "(Get it)":http://yuilibrary.com/downloads/#yuicompressor
+* Set your path to "YUI-Compressor":http://yuilibrary.com/downloads/#yuicompressor jar in rb-file  
 * Place the rb in the parent directory of the webOS-Project
 
 h2. Compress JS & CSS and build IPK:
 
-pre. $ ruby build.rb <PROJECTFOLDER-Name>
+pre. $ ruby build.rb [-i] <PROJECTFOLDER-Name>
+
+Options:
+-i install to default device
