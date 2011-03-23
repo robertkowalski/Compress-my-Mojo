@@ -50,7 +50,7 @@ build = `palm-package ./.build/`
 string = build.gsub(/creating package /, "")
 filename_array = string.split(/ /)
 
-#puts 'Builded '+filename_array[0]+' successfully'
+puts 'Builded '+filename_array[0]+' successfully'
 
 if ARGV[0] == '-i'
    string = 'palm-install '+filename_array[0]
