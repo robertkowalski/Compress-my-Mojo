@@ -1,4 +1,17 @@
 #!/usr/bin/ruby
+require 'fileutils'
+require 'find'
+include FileUtils
+
+##########
+# Config #
+##########
+
+yui_jar = '~/Desktop/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar'
+
+
+
+######## HERE THE CONFIG ENDS ############
 
 ##########
 # Check for command line argument
@@ -10,24 +23,19 @@ unless ARGV.length == 1 or ARGV.length == 2
 end
 
 ##########
-# Config #
+# Check for second arguments
 ##########
-#projectfolder = 'easterhegg' #your webOS Project folder
 if ARGV.length > 1
    projectfolder = ARGV[1] 
 else 
    projectfolder = ARGV[0]
 end
-yui_jar = '~/Desktop/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar'
 
+# pre-deleting ./.build/ for avoiding errors @ build
+puts 'Deleting temp-files'
+string = 'rm -rf ./.build/'
 
-
-####################
-require 'fileutils'
-require 'find'
-include FileUtils
-
-
+# copy bitch, copy!
 cp_r './'+projectfolder, './.build/'
 
 
@@ -42,7 +50,7 @@ def compress(path, pattern, yui_jar)
    end
 end
  
-#compress .js- then .css-files
+# compress .js- then .css-files
 compress('./.build/', /.+\.js$/, yui_jar)
 compress('./.build/', /.+\.css$/, yui_jar)
 
@@ -51,7 +59,7 @@ string = build.gsub(/creating package /, "")
 filename_array = string.split(/ /)
 
 puts 'Builded '+filename_array[0]+' successfully'
-
+# installing if wanted
 if ARGV[0] == '-i'
    string = 'palm-install '+filename_array[0]
    ret  = system(string)
