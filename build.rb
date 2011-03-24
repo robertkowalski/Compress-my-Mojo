@@ -3,12 +3,14 @@ require 'fileutils'
 require 'find'
 include FileUtils
 
+#@todo: check for -i folder 
+#@todo: .build as variable 
+
 ##########
 # Config #
 ##########
 
 yui_jar = '~/Desktop/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar'
-
 
 
 ######## HERE THE CONFIG ENDS ############
@@ -28,11 +30,13 @@ end
 if ARGV.length > 1
    projectfolder = ARGV[1]
 else
-  if ARGV[0] == '-i'
-    puts "Please specify a project folder name."
-    exit
+   if ARGV[0] == '-i'
+      #@todo: check if the project lies in a folder -i
+      puts "Please specify a project folder name."
+      exit
+   else
+      projectfolder = ARGV[0]
   end
-  projectfolder = ARGV[0]
 end
 
 # pre-deleting ./.build/ for avoiding errors @ build
