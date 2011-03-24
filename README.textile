@@ -25,7 +25,7 @@ h3. Needed:
 * Java (also in your $PATH)
 * "YUI-Compressor":http://yuilibrary.com/downloads/#yuicompressor
 * Ruby
-* OS: currently just Linux supported
+* OS: currently Linux / Mac OS X are supported
 
 h3. Configurate:
 
