@@ -6,6 +6,9 @@ include FileUtils
 #@todo: check for -i folder 
 #@todo: .build as variable 
 
+#build_dir = 'my_webos_builds'
+#`palm-package #{build_dir}`
+
 ##########
 # Config #
 ##########
@@ -63,8 +66,8 @@ end
 compress('./.build/', /.+\.js$/, yui_jar)
 compress('./.build/', /.+\.css$/, yui_jar)
 
-build = `palm-package ./.build/`
-string = build.gsub(/creating package /, "")
+build_output = `palm-package ./.build/`
+string = build_output.gsub(/creating package /, "")
 filename_array = string.split(/ /)
 
 puts 'Builded '+filename_array[0]+' successfully'
