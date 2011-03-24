@@ -4,17 +4,16 @@ require 'find'
 include FileUtils
 
 #@todo: check for -i folder 
-#@todo: .build as variable 
-
-#build_dir = 'my_webos_builds'
-#`palm-package #{build_dir}`
 
 ##########
 # Config #
 ##########
 
+#path to yui-compressor jar
 yui_jar = '~/Desktop/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar'
 
+#change your build-folder
+build_dir = './.my_webos_builds'
 
 ######## HERE THE CONFIG ENDS ############
 
@@ -35,6 +34,7 @@ if ARGV.length > 1
 else
    if ARGV[0] == '-i'
       #@todo: check if the project lies in a folder -i
+
       puts "Please specify a project folder name."
       exit
    else
@@ -44,11 +44,11 @@ end
 
 # pre-deleting ./.build/ for avoiding errors @ build
 puts 'Deleting temp-files'
-string = 'rm -rf ./.build/'
+string = 'rm -rf '+build_dir
 ret  = system(string)
 
 # copy bitch, copy!
-cp_r './'+projectfolder, './.build/'
+cp_r './'+projectfolder, build_dir
 
 
 def compress(path, pattern, yui_jar)
@@ -63,10 +63,10 @@ def compress(path, pattern, yui_jar)
 end
  
 # compress .js- then .css-files
-compress('./.build/', /.+\.js$/, yui_jar)
-compress('./.build/', /.+\.css$/, yui_jar)
+compress(build_dir, /.+\.js$/, yui_jar)
+compress(build_dir, /.+\.css$/, yui_jar)
 
-build_output = `palm-package ./.build/`
+build_output = `palm-package #{build_dir}`
 string = build_output.gsub(/creating package /, "")
 filename_array = string.split(/ /)
 
@@ -79,7 +79,7 @@ end
 
 
 puts 'Deleting temp-files'
-string = 'rm -rf ./.build/'
+string = 'rm -rf '+build_dir
 ret  = system(string)
 
 
