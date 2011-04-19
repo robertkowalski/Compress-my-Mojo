@@ -23,6 +23,9 @@ build_dir = './.my_webos_builds'
 unless ARGV.length == 1 or ARGV.length == 2
   puts "Please specify a project folder name."
   puts "Usage: ruby build.rb [-i] <PROJECTFOLDER-NAME>\n"
+  puts "options are:\n"
+  puts "-i   install on device or emulator\n"
+  puts "-v1  package for webOS 1.4.x devices (old format)"
   exit
 end
 
@@ -31,6 +34,7 @@ end
 ##########
 if ARGV.length > 1
    projectfolder = ARGV[1]
+   option = ARGV[0]
 else
    if ARGV[0] == '-i'
       #@todo: check if the project lies in a folder -i
@@ -41,6 +45,17 @@ else
       projectfolder = ARGV[0]
   end
 end
+
+##########
+# add options to palm-package commandline
+##########
+if option and option == '-v1'
+  option = "--use-v1-format"
+else
+  option = ""
+end
+
+# puts 'Options are: ' + option
 
 # pre-deleting ./.build/ for avoiding errors @ build
 puts 'Deleting temp-files'
@@ -66,7 +81,7 @@ end
 compress(build_dir, /.+\.js$/, yui_jar)
 compress(build_dir, /.+\.css$/, yui_jar)
 
-build_output = `palm-package #{build_dir}`
+build_output = `palm-package #{option} #{build_dir}`
 string = build_output.gsub(/creating package /, "")
 filename_array = string.split(/ /)
 
@@ -76,7 +91,6 @@ if ARGV[0] == '-i'
    string = 'palm-install '+filename_array[0]
    ret  = system(string)
 end
-
 
 puts 'Deleting temp-files'
 string = 'rm -rf '+build_dir
