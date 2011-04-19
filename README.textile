@@ -34,7 +34,8 @@ h3. Configurate:
 
 h2. Compress JS & CSS and build IPK:
 
-pre. $ ruby build.rb [-i] <PROJECTFOLDER-Name>
+pre. $ ruby build.rb [-i|v1] <PROJECTFOLDER-Name>
 
 Options:
 -i install to default device
+-v1 package for >= webOS 1.4.x devices (old format)
