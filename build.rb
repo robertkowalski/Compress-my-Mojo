@@ -21,12 +21,12 @@ build_dir = './.my_webos_builds'
 # Check for command line argument
 ##########
 unless ARGV.length == 1 or ARGV.length == 2
-  puts "Please specify a project folder name."
-  puts "Usage: ruby build.rb [-i|v1] <PROJECTFOLDER-NAME>\n"
-  puts "options are:\n"
-  puts "-i   install on device or emulator\n"
-  puts "-v1  package for webOS 1.4.x devices (old format)\n"
-  puts "or combinded: -iv1  to package for webOS 1.4.x devices (old format) and installing them"
+  puts 'Please specify a project folder name.'
+  puts 'Usage: ruby build.rb [-i|v1] <PROJECTFOLDER-NAME>'
+  puts 'options are:'
+  puts '-i   install on device or emulator'
+  puts '-v1  package for webOS 1.4.x devices (old format)'
+  puts 'or combinded: -iv1  to package for webOS 1.4.x devices (old format) and installing them'
   exit
 end
 
@@ -44,6 +44,7 @@ end
 # processing options
 ##########
 if options
+   puts ' '
    if options.index('v1')
       option = '-v1'
       puts 'using 1.4.5 compability mode'
@@ -52,6 +53,7 @@ if options
       install = true
       puts 'will install after packaging'
    end 
+   puts ' '
 end
 
 ##########
@@ -59,21 +61,30 @@ end
 ##########
 
 if option and option == '-v1'
-  option = "--use-v1-format"
+   option = "--use-v1-format"
 else
-  option = ""
+   option = ""
 end
 
- puts 'Options are: ' + option
+#puts 'Options are: ' + option
 
 # pre-deleting ./.build/ for avoiding errors @ build
-puts 'Deleting temp-files'
-string = 'rm -rf '+build_dir
-ret  = system(string)
+if File.directory? projectfolder
+   puts 'Deleting temp-files'
+   string = 'rm -rf '+build_dir
+   ret  = system(string)
+else
+   puts '*** ERROR: Please specify a valid directory'
+   exit
+end
 
 # copy bitch, copy!
-cp_r './'+projectfolder, build_dir
-
+if File.directory? projectfolder
+   cp_r './'+projectfolder, build_dir
+else
+   puts '*** ERROR: Please specify a valid directory'
+   exit
+end
 
 def compress(path, pattern, yui_jar)
    Find.find(path) do |entry|
