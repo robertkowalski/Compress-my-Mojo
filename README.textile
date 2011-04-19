@@ -1,4 +1,4 @@
-h2. "Compress my Mojo - Linux"
+h2. "Compress my Mojo - Linux & Mac OS X"
 
 h3. Compresses your webOS-Mojo-Applications and builds packages
 
