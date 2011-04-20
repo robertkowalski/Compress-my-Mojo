@@ -29,7 +29,7 @@ h3. Needed:
 
 * "YUI-Compressor":http://yuilibrary.com/downloads/#yuicompressor 
 OR
-* "Closure Compiler":http://closure-compiler.googlecode.com/files/compiler-latest.zip
+* "Google Closure Compiler":http://closure-compiler.googlecode.com/files/compiler-latest.zip
 
 
 h3. Configurate:
@@ -45,3 +45,5 @@ Options:
 -i install to default device
 -v1 package for >= webOS 1.4.x devices (old format)
 -g to use google closure compiler (default is YUI-Compressor)
+
+or combine them: -iv1g to package for webOS 1.4.x devices (old format), using Google Closure Compiler and installing them
