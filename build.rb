@@ -89,7 +89,7 @@ end
 
 # copy bitch, copy!
 if File.directory? projectfolder
-   cp_r './'+projectfolder, build_dir
+  `cp -RL #{projectfolder} #{build_dir}`
 else
    puts '*** ERROR: Please specify a valid directory'
    exit
