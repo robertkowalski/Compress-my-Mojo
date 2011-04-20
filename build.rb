@@ -10,6 +10,8 @@ include FileUtils
 
 #path to yui-compressor jar
 yui_jar = '~/Desktop/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar'
+#path to google closure compiler
+closure_jar = '~/Desktop/compiler-latest/compiler.jar'
 
 #change your build-folder if wanted
 build_dir = './.my_webos_builds'
@@ -26,7 +28,8 @@ unless ARGV.length == 1 or ARGV.length == 2
   puts 'options are:'
   puts '-i   install on device or emulator'
   puts '-v1  package for webOS 1.4.x devices (old format)'
-  puts 'or combinded: -iv1  to package for webOS 1.4.x devices (old format) and installing them'
+  puts '-g to use google closure compiler (default is YUI-Compressor)'
+  puts 'or combined: -iv1g  to package for webOS 1.4.x devices (old format), packaging with closure compiler and installing them'
   exit
 end
 
@@ -47,14 +50,22 @@ if options
    puts ' '
    if options.index('v1')
       option = '-v1'
-      puts 'using 1.4.5 compability mode'
+      puts '* Using 1.4.5 compability mode'
    end 
    if options.index('i')
       install = true
-      puts 'will install after packaging'
+      puts '* Will install after packaging'
+   end 
+   if options.index('g')
+      compiler = {:jar => closure_jar, :type => 'google'}
+      puts '* Will use google closure compiler'
+   else 
+      compiler = {:jar => yui_jar, :type => 'yui'}
    end 
    puts ' '
-end
+else 
+   compiler = {:jar => yui_jar, :type => 'yui'}
+end 
 
 ##########
 # add options to palm-package commandline
@@ -65,8 +76,6 @@ if option and option == '-v1'
 else
    option = ""
 end
-
-#puts 'Options are: ' + option
 
 # pre-deleting ./.build/ for avoiding errors @ build
 if File.directory? projectfolder
@@ -86,21 +95,26 @@ else
    exit
 end
 
-def compress(path, pattern, yui_jar)
+def compress(path, pattern, compiler)
    Find.find(path) do |entry|
       if File.file?(entry) and entry[pattern]
          puts 'compressing: '+entry
          #yui yeah
-         string = 'java -jar '+yui_jar+' '+entry+' -o '+entry
+         if(compiler[:type] == 'yui')
+            string = 'java -jar '+compiler[:jar]+' '+entry+' -o '+entry
+         else
+            string = 'java -jar '+compiler[:jar]+' --js='+entry+' --js_output_file='+entry
+         end
          ret  = system(string)
       end
    end
 end
  
 # compress .js- then .css-files
-compress(build_dir, /.+\.js$/, yui_jar)
-compress(build_dir, /.+\.css$/, yui_jar)
-
+compress(build_dir, /.+\.js$/, compiler)
+if(compiler[:type] == 'yui')
+   compress(build_dir, /.+\.css$/, compiler)
+end
 
 build_output = `palm-package #{option} #{build_dir}`
 

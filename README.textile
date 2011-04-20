@@ -1,4 +1,4 @@
-h2. "Compress my Mojo - Linux"
+h2. "Compress my Mojo - Linux & Mac OS X"
 
 h3. Compresses your webOS-Mojo-Applications and builds packages
 
@@ -23,19 +23,26 @@ h2. Installation Notes:
 h3. Needed:
 
 * Java (also in your $PATH)
-* "YUI-Compressor":http://yuilibrary.com/downloads/#yuicompressor
 * Ruby
 * OS: currently Linux / Mac OS X are supported
 
+=======
+
+* "YUI-Compressor":http://yuilibrary.com/downloads/#yuicompressor 
+OR
+* "Closure Compiler":http://closure-compiler.googlecode.com/files/compiler-latest.zip
+
+
 h3. Configurate:
 
-* Set your path to "YUI-Compressor":http://yuilibrary.com/downloads/#yuicompressor jar in rb-file  
+* Set your path to "YUI-Compressor":http://yuilibrary.com/downloads/#yuicompressor or "Google Closure Compiler":http://closure-compiler.googlecode.com/files/compiler-latest.zip jar in rb-file  
 * Place the rb in the parent directory of the webOS-Project
 
-h2. Compress JS & CSS and build IPK:
+h2. Compress JS (& CSS and) build IPK:
 
-pre. $ ruby build.rb [-i|v1] <PROJECTFOLDER-Name>
+pre. $ ruby build.rb [-i|v1|g] <PROJECTFOLDER-Name>
 
 Options:
 -i install to default device
 -v1 package for >= webOS 1.4.x devices (old format)
+-g to use google closure compiler (default is YUI-Compressor)
