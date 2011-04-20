@@ -112,8 +112,9 @@ end
  
 # compress .js- then .css-files
 compress(build_dir, /.+\.js$/, compiler)
-compress(build_dir, /.+\.css$/, compiler)
-
+if(compiler[:type] == 'yui')
+   compress(build_dir, /.+\.css$/, compiler)
+end
 
 build_output = `palm-package #{option} #{build_dir}`
 
