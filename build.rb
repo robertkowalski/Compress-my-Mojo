@@ -103,7 +103,7 @@ def compress(path, pattern, compiler)
          if(compiler[:type] == 'yui')
             string = 'java -jar '+compiler[:jar]+' '+entry+' -o '+entry
          else
-            string = 'java -jar '+compiler[:jar]+' --js='+entry+' --js_output_file='+entry
+            string = 'java -jar '+compiler[:jar]+' --js='+entry
          end
          ret  = system(string)
       end
