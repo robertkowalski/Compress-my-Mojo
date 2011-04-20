@@ -1,0 +1,4 @@
+#!/bin/bash
+dir="$(dirname $(readlink -nf $0))"
+echo "Calling ruby $dir/build.rb $*"
+ruby $dir/build.rb $*

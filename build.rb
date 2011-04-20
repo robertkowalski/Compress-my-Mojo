@@ -9,12 +9,12 @@ include FileUtils
 ##########
 
 #path to yui-compressor jar
-yui_jar = '~/Desktop/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar'
+yui_jar = "#{File.dirname(__FILE__)}/yuicompressor-2.4.2.jar"
 #path to google closure compiler
-closure_jar = '~/Desktop/compiler-latest/compiler.jar'
+closure_jar = "#{File.dirname(__FILE__)}/compiler.jar"
 
 #change your build-folder if wanted
-build_dir = './.my_webos_builds'
+build_dir = "#{File.dirname(__FILE__)}/.tmp/"
 
 
 ######## HERE THE CONFIG ENDS ############
