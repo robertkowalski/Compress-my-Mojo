@@ -35,7 +35,7 @@ OR
 h3. Configurate:
 
 * Set your path to "YUI-Compressor":http://yuilibrary.com/downloads/#yuicompressor or "Google Closure Compiler":http://closure-compiler.googlecode.com/files/compiler-latest.zip jar in rb-file or place them in the directory of this project
-* Add the directory of (a link to) compress-my-mojo to your $PATH
+* Add the directory of (a link to) compress-my-mojo to your $PATH at end of your .bashrc, for example .pre export PATH="$PATH:/your/path/to/compress-my-mojo"
 
 h2. Compress JS (& CSS) and build IPK:
 
