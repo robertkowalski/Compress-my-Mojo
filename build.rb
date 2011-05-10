@@ -21,7 +21,7 @@ build_dir = "#{File.dirname(__FILE__)}/.tmp/"
 ##########
 unless ARGV.length == 1 or ARGV.length == 2
   puts 'Please specify a project folder name.'
-  puts 'Usage: ruby build.rb [-i|v1] <PROJECTFOLDER-NAME>'
+  puts 'Usage: ruby build.rb [-i|v1|g] <PROJECTFOLDER-NAME>'
   puts 'options are:'
   puts '-i   install on device or emulator'
   puts '-v1  package for webOS 1.4.x devices (old format)'
