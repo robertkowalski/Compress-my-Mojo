@@ -50,6 +50,6 @@ Options:
 
 or combine them: -iv1g to package for webOS 1.4.x devices (old format), using Google Closure Compiler and installing them
 
-h3. Commit:
+h2. Commit:
 
 We use 2 spaces as tab size for intendation.
