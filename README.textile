@@ -49,3 +49,7 @@ Options:
 -g to use google closure compiler (default is YUI-Compressor)
 
 or combine them: -iv1g to package for webOS 1.4.x devices (old format), using Google Closure Compiler and installing them
+
+h3. Commit:
+
+We use 2 spaces as tab size for intendation.
