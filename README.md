@@ -5,9 +5,6 @@
 **Copyright (c) 2011, R. Kowalski**
 **All rights reserved.**
 
-
-## New BSD License:
-
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
 
@@ -46,18 +43,19 @@ or jars:
 #### UglifyJS
 
 1. Install node.js & npm
-2. type pre. npm install uglify-js 
+2. Install UglifyJS 
+    npm install uglify-js 
 3. add the path to uglify-js/bin to your $PATH at end of your .bashrc, for example: 
     export PATH="$PATH:~/node_modules/uglify-js/bin"
 
 #### YUI-Compressor or Google Compiler
 
-* Set your path to "YUI-Compressor":http://yuilibrary.com/downloads/#yuicompressor or "Google Closure Compiler":http://closure-compiler.googlecode.com/files/compiler-latest.zip jar in rb-file or place them in the directory of this project
+* Set your path to [YUI-Compressor](http://yuilibrary.com/downloads/#yuicompressor) or [Google Closure Compiler](http://closure-compiler.googlecode.com/files/compiler-latest.zip) jar in rb-file or place them in the directory of this project
 
 #### Location awareness
 
 * Add the directory of (a link to) compress-my-mojo to your $PATH at end of your .bashrc, for example: 
-pre. export PATH="$PATH:/your/path/to/compress-my-mojo"
+    export PATH="$PATH:/your/path/to/compress-my-mojo"
 
 ## Compress JS (& CSS) and build IPK:
 
