@@ -1,6 +1,6 @@
 # "Compress my Mojo - Linux & Mac OS X"
 
-## Compresses your webOS-Mojo-Applications and builds packages
+## Compresses your webOS-Applications and builds packages
 
 **Copyright (c) 2011, R. Kowalski**
 **All rights reserved.**
@@ -27,7 +27,7 @@ We are now supporting UglifyJS for node.js which makes the build a lot of faster
 
 #### If using the fast UglifyJS:
 
-* Node.js (also in your $PATH)
+* Node.js
 get node at: https://github.com/joyent/node/wiki/Installation
 
 #### Or if using slower YUI Compressor or Google Closure Compiler:
@@ -44,7 +44,9 @@ or jars:
 
 1. Install node.js & npm
 2. Install UglifyJS 
-    npm install uglify-js 
+
+    `npm install uglify-js`
+
 3. add the path to uglify-js/bin to your $PATH at end of your .bashrc, for example: 
     
     `export PATH="$PATH:~/node_modules/uglify-js/bin"`
@@ -64,10 +66,15 @@ or jars:
     $ compress-my-mojo [-i|v1|g|ugly] <PROJECTFOLDER-Name>
 
 Options:
+
 -i install to default device
+
 -v1 package for >= webOS 1.4.x devices (old format)
+
 -g to use google closure compiler (default is YUI-Compressor)
+
 -ugly to use UglifyJS (default is YUI-Compressor)
+
 
 or combine them: -iv1g to package for webOS 1.4.x devices (old format), using Google Closure Compiler and installing them
 
