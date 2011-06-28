@@ -21,11 +21,12 @@ build_dir = "#{File.dirname(__FILE__)}/.tmp/"
 ##########
 unless ARGV.length == 1 or ARGV.length == 2
   puts 'Please specify a project folder name.'
-  puts 'Usage: ruby build.rb [-i|v1|g] <PROJECTFOLDER-NAME>'
+  puts 'Usage: ruby build.rb [-i|v1|g|ugly] <PROJECTFOLDER-NAME>'
   puts 'options are:'
   puts '-i   install on device or emulator'
   puts '-v1  package for webOS 1.4.x devices (old format)'
   puts '-g to use google closure compiler (default is YUI-Compressor)'
+  puts '-ugly to use uglifyJS for node'
   puts 'or combined: -iv1g  to package for webOS 1.4.x devices (old format), packaging with closure compiler and installing them'
   exit
 end
@@ -53,12 +54,18 @@ if options
     install = true
     puts '* Will install after packaging'
   end
-  if options.index('g')
+  
+  if options.index('ugly')
+    compiler = {:type => 'ugly'}
+    puts '* Will use UglifyJS'
+  elsif options.index('g')
     compiler = {:jar => closure_jar, :type => 'google'}
     puts '* Will use google closure compiler'
   else
     compiler = {:jar => yui_jar, :type => 'yui'}
-  end
+  end 
+  
+   
   puts ' '
 else
   compiler = {:jar => yui_jar, :type => 'yui'}
@@ -84,7 +91,7 @@ else
   exit
 end
 
-# copy bitch, copy!
+# copy
 if File.directory? projectfolder
   `cp -RL #{projectfolder} #{build_dir}`
 else
@@ -99,8 +106,10 @@ def compress(path, pattern, compiler)
       #yui yeah
       if(compiler[:type] == 'yui')
         string = 'java -jar '+compiler[:jar]+' '+entry+' -o '+entry
-      else
+      elsif(compiler[:type] == 'google')
         string = 'java -jar '+compiler[:jar]+' --js='+entry
+      else  
+        string = 'uglifyjs '+ '--overwrite ' + entry
       end
       ret  = system(string)
     end
