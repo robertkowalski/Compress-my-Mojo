@@ -27,15 +27,13 @@ We are now supporting UglifyJS for node.js which makes the build a lot of faster
 
 #### If using the fast UglifyJS:
 
-* Node.js
-get node at: https://github.com/joyent/node/wiki/Installation
+* Node.js - get node at: https://github.com/joyent/node/wiki/Installation
+* npm
 
 #### Or if using slower YUI Compressor or Google Closure Compiler:
 
-* Java (also in your $PATH)
-or jars: 
-[YUI-Compressor](http://yuilibrary.com/downloads/#yuicompressor)
-[Google Closure Compiler](http://closure-compiler.googlecode.com/files/compiler-latest.zip)
+* Java (also in your $PATH) 
+* [YUI-Compressor](http://yuilibrary.com/downloads/#yuicompressor) AND/OR [Google Closure Compiler](http://closure-compiler.googlecode.com/files/compiler-latest.zip)
 
 
 ### Configurate:
@@ -47,9 +45,11 @@ or jars:
 
     `npm install uglify-js`
 
+
 3. add the path to uglify-js/bin to your $PATH at end of your .bashrc, for example: 
     
     `export PATH="$PATH:~/node_modules/uglify-js/bin"`
+
 
 #### YUI-Compressor or Google Compiler
 
