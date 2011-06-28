@@ -46,7 +46,7 @@ or jars:
 2. Install UglifyJS 
     npm install uglify-js 
 3. add the path to uglify-js/bin to your $PATH at end of your .bashrc, for example: 
-```    
+```shell    
     export PATH="$PATH:~/node_modules/uglify-js/bin"
 ´´´
 #### YUI-Compressor or Google Compiler
@@ -56,7 +56,7 @@ or jars:
 #### Location awareness
 
 * Add the directory of (a link to) compress-my-mojo to your $PATH at end of your .bashrc, for example:
-```
+```shell
     export PATH="$PATH:/your/path/to/compress-my-mojo"
 ´´´
 ## Compress JS (& CSS) and build IPK:
