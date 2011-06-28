@@ -46,17 +46,19 @@ or jars:
 2. Install UglifyJS 
     npm install uglify-js 
 3. add the path to uglify-js/bin to your $PATH at end of your .bashrc, for example: 
+```    
     export PATH="$PATH:~/node_modules/uglify-js/bin"
-
+´´´
 #### YUI-Compressor or Google Compiler
 
 * Set your path to [YUI-Compressor](http://yuilibrary.com/downloads/#yuicompressor) or [Google Closure Compiler](http://closure-compiler.googlecode.com/files/compiler-latest.zip) jar in rb-file or place them in the directory of this project
 
 #### Location awareness
 
-* Add the directory of (a link to) compress-my-mojo to your $PATH at end of your .bashrc, for example: 
+* Add the directory of (a link to) compress-my-mojo to your $PATH at end of your .bashrc, for example:
+```
     export PATH="$PATH:/your/path/to/compress-my-mojo"
-
+´´´
 ## Compress JS (& CSS) and build IPK:
 
     $ compress-my-mojo [-i|v1|g|ugly] <PROJECTFOLDER-Name>
