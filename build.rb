@@ -41,11 +41,11 @@ end
 # Check for second argument
 ##########
 if ARGV.length == 2
-  projectfolder = ARGV[0]
-  options = ARGV[1]
+  projectfolder = ARGV[1]
+  options = ARGV[0]
 elsif ARGV.length > 2
-  projectfolder = ARGV[0]
-  options = ARGV[1]
+  projectfolder = ARGV[1]
+  options = ARGV[0]
   
   i=2
   packages = ''
