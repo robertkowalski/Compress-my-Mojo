@@ -12,31 +12,52 @@ yui_jar = "#{File.dirname(__FILE__)}/yuicompressor-2.4.2.jar"
 closure_jar = "#{File.dirname(__FILE__)}/compiler.jar"
 
 #change your build-folder if wanted
-build_dir = "#{File.dirname(__FILE__)}/.tmp/"
+subfolder = ".tmp/"
+build_dir = "#{File.dirname(__FILE__)}/"+subfolder
 
 ######## HERE THE CONFIG ENDS ############
 
 ##########
 # Check for command line argument
 ##########
-unless ARGV.length == 1 or ARGV.length == 2
+
+unless ARGV.length >= 1
+  puts ' '
   puts 'Please specify a project folder name.'
-  puts 'Usage: ruby build.rb [-i|v1|g|ugly] <PROJECTFOLDER-NAME>'
+  puts 'Usage: ruby build.rb [-i|v1|g|uglys|] <PROJECTFOLDER-NAME>'
   puts 'options are:'
-  puts '-i   install on device or emulator'
-  puts '-v1  package for webOS 1.4.x devices (old format)'
-  puts '-g to use google closure compiler (default is YUI-Compressor)'
-  puts '-ugly to use uglifyJS for node'
+  puts ' '
+  puts '-i                  install on device or emulator'
+  puts '-v1                 package for webOS 1.4.x devices (old format)'
+  puts '-g                  to use google closure compiler (default is YUI-Compressor)'
+  puts '-ugly               to use uglifyJS for node'
+  puts '-s                  for an app containing services'
   puts 'or combined: -iv1g  to package for webOS 1.4.x devices (old format), packaging with closure compiler and installing them'
   exit
 end
 
+
 ##########
 # Check for second argument
 ##########
-if ARGV.length > 1
-  projectfolder = ARGV[1]
-  options = ARGV[0]
+if ARGV.length == 2
+  projectfolder = ARGV[0]
+  options = ARGV[1]
+elsif ARGV.length > 2
+  projectfolder = ARGV[0]
+  options = ARGV[1]
+  
+  i=2
+  packages = ''
+  while i < ARGV.length do
+    if i == 2
+      spacer = ''
+    else 
+      spacer = ' '  
+    end
+    packages += spacer + build_dir + ARGV[i]
+    i += 1
+  end
 else
   projectfolder = ARGV[0]
 end
@@ -64,8 +85,6 @@ if options
   else
     compiler = {:jar => yui_jar, :type => 'yui'}
   end 
-  
-   
   puts ' '
 else
   compiler = {:jar => yui_jar, :type => 'yui'}
@@ -81,15 +100,11 @@ else
   option = ""
 end
 
-# pre-deleting ./.build/ for avoiding errors @ build
-if File.directory? projectfolder
-  puts 'Deleting temp-files'
-  string = 'rm -rf '+build_dir
-  ret  = system(string)
-else
-  puts '*** ERROR: Please specify a valid directory'
-  exit
-end
+
+puts 'Deleting temp-files...'
+string = 'rm -rf '+build_dir
+ret  = system(string)
+puts ' '
 
 # copy
 if File.directory? projectfolder
@@ -123,7 +138,12 @@ if(compiler[:type] == 'yui')
   compress(build_dir, /.+\.css$/, compiler)
 end
 
-build_output = `palm-package #{option} #{build_dir}`
+if packages.nil?
+  build_output = `palm-package #{option} #{build_dir}`
+else 
+  build_output = `palm-package #{packages}`
+end
+
 
 string = build_output.gsub(/creating package /, "")
 filename_array = string.split(/ /)
@@ -136,7 +156,6 @@ if install
   ret  = system(string)
 end
 
-puts 'Deleting temp-files'
+puts 'Deleting temp-files...'
 string = 'rm -rf '+build_dir
 ret  = system(string)
-

@@ -1,4 +1,4 @@
-# "Compress my Mojo - Linux & Mac OS X"
+# "Compress my Mojo/Enyo - Linux & Mac OS X"
 
 ## Compresses your webOS-Applications and builds packages
 
@@ -16,7 +16,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 ## Updates:
 
-We are now supporting UglifyJS for node.js which makes the build a lot of faster
+We added support for node-services in your app, example usage: 
+
+    $ compress-my-mojo BasicService/ -s servicesample.application/ servicesample.srv/ servicesample.package/
+
+
+We are now supporting UglifyJS for node.js which makes the build a lot of faster 
 
 ## Installation Notes:
 
@@ -63,7 +68,7 @@ We are now supporting UglifyJS for node.js which makes the build a lot of faster
 
 ## Compress JS (& CSS) and build IPK:
 
-    $ compress-my-mojo [-i|v1|g|ugly] <PROJECTFOLDER-Name>
+    $ compress-my-mojo [-i|v1|g|ugly|s] <PROJECTFOLDER-Name>
 
 Options:
 
@@ -75,6 +80,9 @@ Options:
 
 -ugly to use UglifyJS (default is YUI-Compressor)
 
+-s for service-mode, if you package an app with webOS Javascript Services, usage:
+
+    $ compress-my-mojo BasicApp/ -s servicesample.application/ servicesample.srv/ servicesample.package/
 
 or combine them: -iv1g to package for webOS 1.4.x devices (old format), using Google Closure Compiler and installing them
 
