@@ -18,7 +18,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 We added support for node-services in your app, example usage: 
 
-    $ compress-my-mojo BasicService/ -s servicesample.application/ servicesample.srv/ servicesample.package/
+    $ compress-my-mojo -s BasicService/ servicesample.application/ servicesample.srv/ servicesample.package/
 
 
 We are now supporting UglifyJS for node.js which makes the build a lot of faster 
