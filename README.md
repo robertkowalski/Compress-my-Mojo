@@ -21,7 +21,7 @@ We added support for node-services in your app, example usage:
     $ compress-my-mojo -s BasicService/ servicesample.application/ servicesample.srv/ servicesample.package/
 
 
-We are now supporting UglifyJS for node.js which makes the build a lot of faster 
+We are now supporting UglifyJS for node.js which makes the build a lot faster 
 
 
 ## Installation Notes:
