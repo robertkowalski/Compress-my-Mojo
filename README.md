@@ -23,6 +23,7 @@ We added support for node-services in your app, example usage:
 
 We are now supporting UglifyJS for node.js which makes the build a lot of faster 
 
+
 ## Installation Notes:
 
 ### Needed:
@@ -82,7 +83,8 @@ Options:
 
 -s for service-mode, if you package an app with webOS Javascript Services, usage:
 
-    $ compress-my-mojo BasicApp/ -s servicesample.application/ servicesample.srv/ servicesample.package/
+    $ compress-my-mojo -s BasicApp/ servicesample.application/ servicesample.srv/ servicesample.package/
+
 
 or combine them: -iv1g to package for webOS 1.4.x devices (old format), using Google Closure Compiler and installing them
 
